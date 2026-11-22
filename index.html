@@ -26,4 +26,7 @@ let group=0,index=0,score=0,answered=false;const $=id=>document.getElementById(i
  function finish(){const correct=entries.filter(x=>x.ok).length;const mark=grade(correct,40);$t('testcount').textContent='Oefentoets afgerond';$t('testprogress').style.width='100%';$t('testquestion').textContent='';$t('testanswer').classList.add('hidden');$t('testnext').classList.add('hidden');const missed=entries.filter(x=>!x.ok);const el=document.createElement('div');const h=document.createElement('h3');h.textContent='Cijfer '+mark.toFixed(1).replace('.',',')+' — '+(correct>=26?'voldoende':'onvoldoende');el.append(h);const p=document.createElement('p');p.textContent=correct+'/40 goed ('+(correct/40*100).toFixed(0)+'%). Voldoende vanaf 26/40. De gebruikte niet-lineaire normering is een gekozen oefenmodel, geen vastgestelde schoolformule.';el.append(p);const sub=document.createElement('h4');sub.textContent='Bekijk je fouten ('+missed.length+')';el.append(sub);missed.forEach(x=>{const d=document.createElement('p');d.textContent=x.item.cat+' — '+x.item.s.replace(/<[^>]*>/g,'')+' | Jouw antwoord: '+x.given+' | Goed: '+x.item.a+' | '+x.item.e.replace(/<[^>]*>/g,'');el.append(d)});if(!missed.length){const d=document.createElement('p');d.textContent='Alles goed!';el.append(d)}$t('testresult').replaceChildren(el);}
  $t('starttest').addEventListener('click',start);$t('testnext').addEventListener('click',next);$t('testanswer').addEventListener('keydown',e=>{if(e.key==='Enter')next()});
 })();
-</script></html>
+</script><!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"56e3b70a46a4482a9d68157cd770e245"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</html>
